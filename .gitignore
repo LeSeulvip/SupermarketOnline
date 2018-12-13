@@ -3,3 +3,7 @@
 /SupermarketOnline/.classpath
 /SupermarketOnline/.gradle
 /SupermarketOnline/bin
+/SupermarketOnlineStatic/node_modules
+/SupermarketOnlineStatic/dist
+/SupermarketOnlineStatic/nginx/temp
+/SupermarketOnlineStatic/nginx/logs

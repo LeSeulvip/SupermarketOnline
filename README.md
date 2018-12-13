@@ -1,6 +1,7 @@
 # SupermarketOnline
 
 - 后台项目依赖
+  - 在临时下载目录中里面打开`Git Bash here`
   - 执行`git clone git@github.com:huhuiyu/springboot-mybatis-base.git SupermarketOnline`
   - 将里面的项目名称修改为`SupermarketOnline`
   - 编辑项目里面的`.project`文件，将里面的项目名称修改为`SupermarketOnline`
@@ -19,3 +20,8 @@
   - `http://127.0.0.1:14000/?token=250c7d66-536a-4043-9b87-4da639c5ec8e&echo=123`
   - `http://127.0.0.1:14000/util/validate.jpg?token=250c7d66-536a-4043-9b87-4da639c5ec8e`
   - `http://127.0.0.1:14000/test/checkImageCode?token=250c7d66-536a-4043-9b87-4da639c5ec8e&imageCode=ehx1x`
+
+- 前台项目依赖
+  - 在临时下载目录中里面打开`Git Bash here`
+  - 执行`git clone git@github.com:huhuiyu/angularjs-base.git SupermarketOnlineStatic`
+  - 删除`.git`和`docs`目录以及所有`.md`文件后复制到当前项目
