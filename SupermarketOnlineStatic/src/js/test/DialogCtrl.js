@@ -1,4 +1,4 @@
-(function() {
+(function () {
   var ctrls = angular.module('controllers');
   ctrls.controller('TestDialogCtrl', [
     '$scope',
@@ -19,24 +19,24 @@
     $log.debug('TestDialogCtrl init...');
 
     // 处理scope销毁
-    $scope.$on('$destroy', function() {
+    $scope.$on('$destroy', function () {
       $log.debug('TestDialogCtrl destroy...');
     });
 
-    $scope.showDialog = function() {
+    $scope.showDialog = function () {
       DialogService.showConfirm(
         '是否修改对话框信息',
-        function() {
+        function () {
           DialogService.setTempDialogTitle('临时标题');
           DialogService.setAlertBtnOk('修改按钮');
           DialogService.showAlert('修改了信息');
         },
-        function() {
-          DialogService.showAlert('带回调处理', function() {
-            DialogService.showWait('请等待...', function() {
+        function () {
+          DialogService.showAlert('带回调处理', function () {
+            DialogService.showWait('请等待...', function () {
               $log.debug('等待对话框关闭');
             });
-            $timeout(function() {
+            $timeout(function () {
               DialogService.hideWait();
             }, 2000);
           });
@@ -44,7 +44,7 @@
       );
     };
 
-    $scope.result = function(info) {
+    $scope.result = function (info) {
       $log.debug('自定义对话框返回结果：', info);
       if (info) {
         DialogService.showAlert(
@@ -57,14 +57,13 @@
       }
     };
 
-    $scope.showCustom = function() {
+    $scope.showCustom = function () {
       DialogService.showCustom(
-        'templates/test/dialog-inc.html',
-        {
+        'templates/test/dialog-inc.html', {
           ts: new Date().getTime(),
           scope: $scope
         },
-        function() {
+        function () {
           $log.debug('自定义对话框关闭');
         }
       );

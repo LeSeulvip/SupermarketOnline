@@ -1,4 +1,4 @@
-(function(win) {
+(function (win) {
   //自定义配置
   var MyAppConfig = {
     //项目模块名称
@@ -26,7 +26,7 @@
   //配置日志是否开启debug
   app.config([
     '$logProvider',
-    function($logProvider) {
+    function ($logProvider) {
       $logProvider.debugEnabled(MyAppConfig.debug);
     }
   ]);
@@ -34,10 +34,10 @@
   // 处理ajax请求
   app.config([
     '$httpProvider',
-    function($httpProvider) {
+    function ($httpProvider) {
       /* post提交可以使用json数据 */
       $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-      var parseParams = function(params) {
+      var parseParams = function (params) {
         // 参数处理
         var query = '',
           name,
@@ -77,7 +77,7 @@
       };
 
       $httpProvider.defaults.transformRequest = [
-        function(data) {
+        function (data) {
           var formdata = data;
           if (angular.isObject(data) && String(data) !== '[object File]') {
             formdata = parseParams(data);
@@ -91,9 +91,9 @@
         '$q',
         '$log',
         '$location',
-        function($q, $log, $location) {
+        function ($q, $log, $location) {
           return {
-            responseError: function(rejection) {
+            responseError: function (rejection) {
               $log.debug('应答发生错误：', rejection);
               if (rejection.config.url.substr(0, 9) == 'templates') {
                 $log.debug('模板页不存在==>', rejection.config.url);
@@ -110,7 +110,7 @@
   // 配置路由
   app.config([
     '$routeProvider',
-    function($routeProvider) {
+    function ($routeProvider) {
       $routeProvider
         //默认页面
         .when('', {
