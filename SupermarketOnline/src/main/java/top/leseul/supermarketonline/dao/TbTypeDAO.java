@@ -23,12 +23,22 @@ public interface TbTypeDAO {
   public List<TbType> queryAll() throws Exception;
 
   /**
-   * -按主键查询
+   * 按-主键查询
    * 
+   * @param tbType 按主键查询
    * @return TbType主键
    * @throws Exception 处理发生错误
    */
-  public TbType queryByKey() throws Exception;
+  public TbType queryByKey(TbType tbType) throws Exception;
+
+  /**
+   * -按照名称查询
+   * 
+   * @param tbType 按照名称查询
+   * @return TypeName值
+   * @throws Exception 处理发生错误
+   */
+  public TbType queryByTypeName(TbType tbType) throws Exception;
 
   /**
    * -添加

@@ -13,6 +13,12 @@
     select count(tid) from TbType
   </select>
 
+  <!-- 按照名称查询 -->
+  <select id="queryByTypeName" resultType="TbType" parameterType="TbType">
+    select tid,typeName,typeInfo,isEnable,lastupdate from TbType
+    where typeName=#{typeName}
+  </select>
+
   <!-- 按主键查询 -->
   <select id="queryByKey" resultType="TbType" parameterType="TbType">
     select tid,typeName,typeInfo,isEnable,lastupdate from TbType
@@ -21,7 +27,7 @@
 
   <!-- 添加 -->
   <insert id="add" parameterType="TbType">
-    inser into TbType(typeName,typeInfo) values(#{typeName},#{typeInfo})
+    insert into TbType(typeName,typeInfo) values(#{typeName},#{typeInfo})
   </insert>
 
   <!-- 修改 -->
