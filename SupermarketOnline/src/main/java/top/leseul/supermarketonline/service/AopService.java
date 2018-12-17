@@ -14,8 +14,8 @@ public interface AopService {
    * -创建或者更新token
    *
    * @param token 客户端传入的token
-   * @return
-   * @throws Exception
+   * @return 更新token结果
+   * @throws Exception 处理数据发生错误
    */
   TbToken createOrUpdateToken(TbToken token) throws Exception;
 

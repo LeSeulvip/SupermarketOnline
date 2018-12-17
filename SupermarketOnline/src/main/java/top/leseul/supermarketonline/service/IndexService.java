@@ -13,8 +13,8 @@ public interface IndexService {
   /**
    * -首页显示信息
    * 
-   * @return
-   * @throws Exception
+   * @return 首页显示信息结果
+   * @throws Exception 处理数据发生错误
    */
   JsonMessage index() throws Exception;
 

@@ -23,8 +23,8 @@ public class PageBean extends BaseEntity {
   /**
    * -通过分页插件信息设置page信息
    *
-   * @param page
-   * @return
+   * @param page 设置page信息
+   * @return page结果
    */
   public PageBean setPageInfo(Page<?> page) {
     total = (int) page.getTotal();

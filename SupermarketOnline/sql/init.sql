@@ -17,6 +17,6 @@ select configKey,configValue,lastupdate from TbConfig;
 select token,lastupdate from TbToken;
 select token,infokey,info,lastupdate from TbTokenInfo;
 select tid,typeName,typeInfo,isEnable,lastupdate from  TbType;
-select stid,subName,subeInfo,isEnable,lastupdate from  TbSubType;
+select stid,tid,subName,subInfo,isEnable,lastupdate from  TbSubType;
 select auid,username,password,nickname, isEnable,lastupdate from TbAdminUser;
 
