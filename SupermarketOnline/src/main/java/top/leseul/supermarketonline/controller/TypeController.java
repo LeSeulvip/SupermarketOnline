@@ -25,4 +25,23 @@ public class TypeController {
     // /type/add?token=7f2b8770-4c84-4621-9ecc-6bd1069f6176&tbType.typeName=衣服&tbType.typeInfo=服装类别
     return typeService.add(model);
   }
+  
+  @RequestMapping("/queryByKey")
+  public JsonMessage queryByKey(TbTypeModel model) throws Exception {
+    // /type/queryByKey?token=7f2b8770-4c84-4621-9ecc-6bd1069f6176
+    return typeService.queryByKey(model);
+  }
+  
+  @RequestMapping("/delete")
+  public JsonMessage delete(TbTypeModel model) throws Exception {
+    // /type/delete?token=7f2b8770-4c84-4621-9ecc-6bd1069f6176
+    return typeService.delete(model);
+  }
+  
+  @RequestMapping("/modify")
+  public JsonMessage modify(TbTypeModel model) throws Exception {
+    // /type/modify?token=7f2b8770-4c84-4621-9ecc-6bd1069f6176
+    return typeService.modify(model);
+  }
+  
 }
