@@ -15,6 +15,7 @@
       pageSize: 5
     };
 
+    //查询
     $scope.query = function () {
       DialogService.showWait('数据处理中');
       DataService.send('/type/queryAll', {
@@ -32,6 +33,7 @@
 
     $scope.query();
 
+    //分页
     $scope.toPage = function (pn) {
       // 不能超出范围
       if (pn <= 0 || pn > $scope.page.pageCount || pn == $scope.page.pageNumber) {
@@ -44,17 +46,16 @@
 
     //添加
     $scope.toAdd = function () {
-
       DialogService.setTempDialogTitle('添加类型');
       DialogService.showCustom('templates/manage/typemanage-add.html', {}, function () {
         $scope.query();
       });
     };
 
-    //删除
+    //禁用
     $scope.toDelete = function (type) {
-      DialogService.showConfirm('是否删除:' +type.typeName + '?', function () {
-        DialogService.showWait('删除中，请稍后......');
+      DialogService.showConfirm('是否禁用:' + type.typeName + '?', function () {
+        DialogService.showWait('禁用中，请稍后......');
         DataService.send('/type/delete', {
           tbType: type
         }, function (data) {
@@ -65,6 +66,31 @@
             }
           });
         });
+      });
+    };
+
+    //启用
+    $scope.toUnDelete = function (type) {
+      DialogService.showConfirm('是否启用:' + type.typeName + '?', function () {
+        DialogService.showWait('启用中，请稍后......');
+        DataService.send('/type/undelete', {
+          tbType: type
+        }, function (data) {
+          DialogService.hideWait();
+          DialogService.showAlert(data.message, function () {
+            if (data.success) {
+              $scope.query();
+            }
+          });
+        });
+      });
+    };
+
+    //修改
+    $scope.toUpdate = function (type) {
+      DialogService.setTempDialogTitle('修改类型数据');
+      DialogService.showCustom('templates/manage/typemanage-update.html', type, function () {
+        $scope.query();
       });
     };
   }

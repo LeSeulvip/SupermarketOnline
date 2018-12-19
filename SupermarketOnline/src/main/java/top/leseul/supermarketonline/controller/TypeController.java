@@ -38,6 +38,12 @@ public class TypeController {
     return typeService.delete(model);
   }
   
+  @RequestMapping("/undelete")
+  public JsonMessage undelete(TbTypeModel model) throws Exception {
+    // /type/delete?token=7f2b8770-4c84-4621-9ecc-6bd1069f6176
+    return typeService.undelete(model);
+  }
+  
   @RequestMapping("/modify")
   public JsonMessage modify(TbTypeModel model) throws Exception {
     // /type/modify?token=7f2b8770-4c84-4621-9ecc-6bd1069f6176

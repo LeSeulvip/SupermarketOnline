@@ -60,7 +60,6 @@ public class TypeServiceImpl implements TypeService {
 
   @Override
   public JsonMessage queryByKey(TbTypeModel model) throws Exception {
-
     JsonMessage message = JsonMessage.getSuccess("");
     message.put("type", tbTypeDAO.queryByKey(model.getTbType()));
     return message;
@@ -70,8 +69,16 @@ public class TypeServiceImpl implements TypeService {
   public JsonMessage delete(TbTypeModel model) throws Exception {
     model.getTbType().setIsEnable("n");
     int result = tbTypeDAO.delete(model.getTbType());
-    return result == 1 ? JsonMessage.getSuccess("删除成功") : JsonMessage.getFail("删除失败");
+    return result == 1 ? JsonMessage.getSuccess("禁用成功") : JsonMessage.getFail("禁用失败");
   }
+  
+  @Override
+  public JsonMessage undelete(TbTypeModel model) throws Exception {
+    model.getTbType().setIsEnable("y");
+    int result = tbTypeDAO.delete(model.getTbType());
+    return result == 1 ? JsonMessage.getSuccess("启用成功") : JsonMessage.getFail("启用失败");
+  }
+  
 
   @Override
   public JsonMessage modify(TbTypeModel model) throws Exception {
