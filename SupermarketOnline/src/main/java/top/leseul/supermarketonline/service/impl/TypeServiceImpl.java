@@ -16,7 +16,7 @@ import top.leseul.supermarketonline.utils.MyUtils;
 import top.leseul.supermarketonline.utils.PageBean;
 
 /**
- * 
+ * Type实现层
  * @author LeSeul
  *
  */

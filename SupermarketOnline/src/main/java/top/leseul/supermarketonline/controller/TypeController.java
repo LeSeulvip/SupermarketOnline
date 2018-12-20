@@ -8,6 +8,11 @@ import top.leseul.supermarketonline.model.TbTypeModel;
 import top.leseul.supermarketonline.service.TypeService;
 import top.leseul.supermarketonline.utils.JsonMessage;
 
+/**
+ * Type的控制器
+ * @author LeSeul
+ *
+ */
 @RestController
 @RequestMapping("/type")
 public class TypeController {

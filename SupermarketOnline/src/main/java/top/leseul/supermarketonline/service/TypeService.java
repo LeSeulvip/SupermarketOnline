@@ -4,7 +4,7 @@ import top.leseul.supermarketonline.model.TbTypeModel;
 import top.leseul.supermarketonline.utils.JsonMessage;
 
 /**
- * 
+ * Type服务层
  * @author LeSeul
  *
  */
