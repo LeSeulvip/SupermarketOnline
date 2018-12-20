@@ -42,6 +42,7 @@ public class SubTypeController {
 
   @RequestMapping("/queryAll")
   public JsonMessage queryAll(TbSubTypeModel model) throws Exception {
+    // /subtype/queryAll
     return subTypeService.queryAll(model);
   }
 

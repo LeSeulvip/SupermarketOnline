@@ -20,6 +20,12 @@
     select count(*) from TbSubType
     where tid in (select tid from TbType where isEnable='y')
   </select>
+  
+    <!-- 查询小类名称 -->
+  <select id="qyeryByTidSubName" resultType="TbSubType" parameterType="TbSubType">
+  select stid,tid,subName,subInfo,isEnable,lastupdate from TbSubType
+  where tid=#{tid} and subName=#{subName}
+  </select>
 
   <!-- 添加小分类信息 -->
   <insert id="add" parameterType="TbSubType">

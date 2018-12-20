@@ -59,4 +59,13 @@ public interface TbSubTypeDAO {
    */
   int updateIsEnable(TbSubType subType) throws Exception;
 
+  /**
+   * -按照tid和subName查询小类信息
+   * 
+   * @param subType 小类信息
+   * @return 小类信息
+   * @throws Exception 处理发生异常
+   */
+  TbSubType qyeryByTidSubName(TbSubType subType) throws Exception;
+
 }
