@@ -68,4 +68,13 @@ public interface TbSubTypeDAO {
    */
   TbSubType qyeryByTidSubName(TbSubType subType) throws Exception;
 
+  /**
+   * -按照主键查询
+   * 
+   * @param subType 信息
+   * @return 信息
+   * @throws Exception 处理发生异常
+   */
+  TbSubType qyeryByKey(TbSubType subType) throws Exception;
+
 }

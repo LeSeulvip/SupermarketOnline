@@ -65,11 +65,32 @@
         subType: subtype
       }, function (data) {
         DialogService.hideWait();
-        DialogService.showAlert(data.message,function(){
+        DialogService.showAlert(data.message, function () {
           if (data.success) {
             $scope.query();
           }
         });
+      });
+    };
+
+    //分页
+    $scope.toPage = function (pn) {
+      // 不能超出范围
+      if (pn <= 0 || pn > $scope.page.pageCount || pn == $scope.page.pageNumber) {
+        return;
+      }
+      //分页查询
+      $scope.page.pageNumber = pn;
+      $scope.query();
+    };
+
+    //转到修改
+    $scope.toUpdate = function (subtype) {
+      DialogService.showCustom('templates/manage/subtypemanage-update.html', {
+        types: $scope.types,
+        type: subtype
+      }, function () {
+        $scope.query();
       });
     };
   }
