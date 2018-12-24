@@ -1,4 +1,42 @@
-<div class="text-center">
-  <a href="/#!/route/page/manage/typemanage">类型管理</a>
-  <a href="/#!/route/page/manage/subtypemanage">小分类管理</a>
+<div class="text-center manage-index" ng-controller="ManageIndexCtrl">
+  <div class="main">
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <div class="panel-title text-center">
+          用户登录
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <form action="" onsubmit="return false;">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="iconfont">&#xe638;</i>
+            </span>
+            <input type="text" class="form-control" placeholder="请输入用户名">
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-addon">
+              <i class="iconfont">&#xe69f;</i>
+            </span>
+            <input type="password" class="form-control" autocomplete="off" placeholder="请输入密码">
+          </div>
+        </div>
+      </form>
+      </div>
+
+      <div class="panel-footer text-center">
+        <span class="btn btn-primary btn-sm">
+          <i class="iconfont">&#xe602;</i>
+          登录
+        </span>
+        <span class="btn btn-danger btn-sm">
+          <i class="iconfont">&#xe79a;</i>
+          重填
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
