@@ -8,7 +8,7 @@
   <!-- 按用户名查询用户信息 -->
   <select id="queryByUsername" parameterType="TbAdminUser" resultType="TbAdminUser">
     select auid,username,password,nickname,isEnable,lastupdate from TbAdminUser
-    where username=#{usernmae}
+    where username=#{username}
   </select>
 
   <!-- 按主键查询用户信息 -->
@@ -21,7 +21,7 @@
   <!-- 查询用户登录相关信息 -->
   <select id="queryTokenUser" parameterType="TbTokenInfo" resultType="TbAdminUser">
     select auid,username,password,nickname,isEnable,lastupdate from TbAdminUser
-    where auid=(select info from TbTokenInfo where token=#{token}and infokey='admin-user')
+    where auid=(select info from TbTokenInfo where token=#{token} and infokey='admin-user')
   </select>
 
   <!-- 添加登录用户信息 -->
@@ -32,12 +32,12 @@
   <!-- 修改登录用户信息 -->
   <update id="updateTokenUser" parameterType="TbTokenInfo">
     update TbTokenInfo set info=#{info},lastupdate=now()
-    where token=#{token}and infokey='admin-user'
+    where token=#{token} and infokey='admin-user'
   </update>
 
   <!-- 移除登录用户信息 -->
   <delete id="deleteTokenUser" parameterType="TbTokenInfo">
-    delete form TbTokenInfo where token=#{token}and info='admin-user'
+    delete from TbTokenInfo where token=#{token} and infokey='admin-user'
   </delete>
 
 </mapper>

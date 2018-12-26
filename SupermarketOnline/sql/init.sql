@@ -10,6 +10,7 @@ truncate table TbAdminUser;
 
 /*token过期时间配置*/
 insert into TbConfig(configKey,configValue) values('token.timeout','30');
+insert into TbAdminUser(username,password,nickname)values('admin','admin-pwd','内置管理员');
 
 
 /*查询*/

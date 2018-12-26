@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import top.leseul.supermarketonline.dao.TbAdminUserDAO;
 import top.leseul.supermarketonline.entity.TbAdminUser;
+import top.leseul.supermarketonline.entity.TbTokenInfo;
 import top.leseul.supermarketonline.model.AdminUserModel;
 import top.leseul.supermarketonline.service.AdminUserService;
 import top.leseul.supermarketonline.utils.JsonMessage;
@@ -21,6 +22,7 @@ import top.leseul.supermarketonline.utils.MyUtils;
 @Transactional(rollbackFor = Exception.class)
 public class AdminUserServiceimpl implements AdminUserService {
 
+  private static final String USER_ISENABLE = "y";
   @Autowired
   private TbAdminUserDAO tbAdminUserDAO;
 
@@ -37,20 +39,36 @@ public class AdminUserServiceimpl implements AdminUserService {
     if (suser == null) {
       return JsonMessage.getFail("用户名不存在");
     }
-    if (!"y".equalsIgnoreCase(suser.getIsEnable())) {
+    if (!USER_ISENABLE.equalsIgnoreCase(suser.getIsEnable())) {
       return JsonMessage.getFail("用户已禁用");
     }
     // equalsIgnoreCase判断不区分大小写
-    if (suser.getPassword().equalsIgnoreCase(user.getPassword())) {
+    if (!suser.getPassword().equalsIgnoreCase(user.getPassword())) {
       return JsonMessage.getFail("密码错误");
     }
+    // 登录成功需要添加tokeninfo
+    TbTokenInfo tokenInfo = model.makeTbTokenInfo();
+    tokenInfo.setInfo(suser.getAuid() + "");
+    // 查看是否存在token中是否存在
+    TbAdminUser tuser = tbAdminUserDAO.queryTokenUser(tokenInfo);
+    if (tuser != null) {
+      // 存在就删除
+      tbAdminUserDAO.deleteTokenUser(tokenInfo);
+    }
+    tbAdminUserDAO.saveUserToToken(tokenInfo);
     return JsonMessage.getSuccess("登录成功");
   }
 
   @Override
   public JsonMessage getUserInfo(AdminUserModel model) throws Exception {
     JsonMessage message = JsonMessage.getSuccess("");
-    message.put("user", tbAdminUserDAO.queryTokenUser(model.makeTbTokenInfo()));
+    TbAdminUser user = tbAdminUserDAO.queryTokenUser(model.makeTbTokenInfo());
+    if (user != null) {
+      // 去掉敏感信息
+      user.setAuid(null);
+      user.setPassword(null);
+    }
+    message.put("user", user);
     return message;
   }
 

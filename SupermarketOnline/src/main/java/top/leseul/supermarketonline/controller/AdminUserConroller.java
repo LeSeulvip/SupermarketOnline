@@ -35,4 +35,6 @@ public class AdminUserConroller {
   public JsonMessage getUserInfo(AdminUserModel model) throws Exception {
     return adminUserService.getUserInfo(model);
   }
+  
+  
 }
