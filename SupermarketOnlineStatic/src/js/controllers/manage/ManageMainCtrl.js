@@ -25,13 +25,16 @@
 
 
     //通过hash参数控制包含页面
-    var hashPage = $location.hash();
     var basePath = 'templates/manage/';
-    $scope.inc = hashPage ? basePath + hashPage : basePath + 'typemanage.html';
+    $scope.hashPage = $location.hash();
+    $scope.hashPage = $scope.hashPage ? $scope.hashPage : "typemanage.html";
+    $scope.inc = basePath + $scope.hashPage;
 
     $scope.changePage = function (page) {
       $location.hash(page + ".html");
       $location.path($location.path());
     };
+
+
   }
 })();
