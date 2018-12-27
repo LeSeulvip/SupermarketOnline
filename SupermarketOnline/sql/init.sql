@@ -10,6 +10,9 @@ truncate table TbAdminUser;
 
 /*token过期时间配置*/
 insert into TbConfig(configKey,configValue) values('token.timeout','30');
+/*网站标题信息*/
+insert into TbConfig(configKey,configValue) values('title','简易在线商城');
+/*默认后台管理员*/
 insert into TbAdminUser(username,password,nickname)values('admin','admin-pwd','内置管理员');
 
 

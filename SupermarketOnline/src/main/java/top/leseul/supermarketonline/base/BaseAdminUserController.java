@@ -3,6 +3,11 @@ package top.leseul.supermarketonline.base;
 import top.leseul.supermarketonline.aop.NeedAdminUser;
 import top.leseul.supermarketonline.entity.TbAdminUser;
 
+/**
+ * 登录用户信息
+ * @author LeSeul
+ *
+ */
 public abstract class BaseAdminUserController implements NeedAdminUser {
 
   /**

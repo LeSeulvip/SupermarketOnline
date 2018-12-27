@@ -4,7 +4,9 @@ import top.leseul.supermarketonline.base.BaseModel;
 import top.leseul.supermarketonline.entity.TbAdminUser;
 
 /**
- * -管理用户model
+ * 管理用户model
+ * @author LeSeul
+ *
  */
 public class AdminUserModel extends BaseModel {
 

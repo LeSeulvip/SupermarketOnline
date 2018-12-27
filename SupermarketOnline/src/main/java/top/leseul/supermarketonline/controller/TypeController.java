@@ -58,7 +58,9 @@ public class TypeController implements NeedAdminUser {
     return typeService.modify(model);
   }
 
-  // 登录用户信息=====================
+  /**
+   * 登录用户信息
+   */
   private TbAdminUser user;
 
 
@@ -72,7 +74,5 @@ public class TypeController implements NeedAdminUser {
     this.user = user;
   }
   
-  
-  // 登录用户信息=====================
 
 }
