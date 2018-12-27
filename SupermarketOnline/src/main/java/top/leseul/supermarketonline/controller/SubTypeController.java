@@ -4,19 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import top.leseul.supermarketonline.base.BaseAdminUserController;
 import top.leseul.supermarketonline.model.TbSubTypeModel;
 import top.leseul.supermarketonline.service.SubTypeService;
 import top.leseul.supermarketonline.utils.JsonMessage;
 
 /**
- * TbSubType控制层
+ * TbSubType控制器
  * 
- * @author LeSeul
+ * @author DarkKnight
  *
  */
 @RestController
 @RequestMapping("/subtype")
-public class SubTypeController {
+public class SubTypeController extends BaseAdminUserController {
+
   @Autowired
   private SubTypeService subTypeService;
 
@@ -30,9 +32,9 @@ public class SubTypeController {
     return subTypeService.enable(model);
   }
 
-  @RequestMapping("/update")
-  public JsonMessage update(TbSubTypeModel model) throws Exception {
-    return subTypeService.update(model);
+  @RequestMapping("/queryAll")
+  public JsonMessage queryAll(TbSubTypeModel model) throws Exception {
+    return subTypeService.queryAll(model);
   }
 
   @RequestMapping("/add")
@@ -40,10 +42,9 @@ public class SubTypeController {
     return subTypeService.add(model);
   }
 
-  @RequestMapping("/queryAll")
-  public JsonMessage queryAll(TbSubTypeModel model) throws Exception {
-    // /subtype/queryAll
-    return subTypeService.queryAll(model);
+  @RequestMapping("/update")
+  public JsonMessage update(TbSubTypeModel model) throws Exception {
+    return subTypeService.update(model);
   }
 
 }

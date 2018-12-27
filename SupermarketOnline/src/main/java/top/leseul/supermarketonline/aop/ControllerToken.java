@@ -3,11 +3,14 @@ package top.leseul.supermarketonline.aop;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import top.leseul.supermarketonline.base.BaseAop;
 import top.leseul.supermarketonline.base.BaseModel;
+import top.leseul.supermarketonline.entity.TbAdminUser;
 import top.leseul.supermarketonline.entity.TbToken;
 import top.leseul.supermarketonline.service.AopService;
 import top.leseul.supermarketonline.utils.JsonMessage;
@@ -15,16 +18,20 @@ import top.leseul.supermarketonline.utils.JsonMessage;
 /**
  * -控制器token处理
  *
- * @author leseul
+ * @author DarkKnight
  *
  */
 @Aspect
 @Component
 public class ControllerToken extends BaseAop {
+
+  private static final int LOG_FAIL = 1000;
+
+  private static final Logger log = LoggerFactory.getLogger(ControllerToken.class);
+
   @Autowired
   private AopService aopService;
 
-  
   private TbToken processInputToken(ProceedingJoinPoint pjp) throws Exception {
     TbToken token = null;
     BaseModel model = null;
@@ -49,7 +56,6 @@ public class ControllerToken extends BaseAop {
     return token;
   }
 
- 
   private void processResponseToken(Object result, TbToken token) throws Exception {
     // 回发token信息
     if (result instanceof JsonMessage && token != null) {
@@ -58,10 +64,34 @@ public class ControllerToken extends BaseAop {
     }
   }
 
-  
+  private JsonMessage checkNeedUser(ProceedingJoinPoint pjp, TbToken token) throws Exception {
+    // 处理需要登录的情况
+    Object target = pjp.getTarget();
+    log.debug(String.format("登录检测：%s", target));
+    if (!(target instanceof NeedAdminUser)) {
+      return null;
+    }
+    if (token == null) {
+      return null;
+    }
+    // 只有实现NeedAdminUser接口的控制器且token不为空才需要登录检测
+    NeedAdminUser nau = (NeedAdminUser) target;
+    TbAdminUser user = aopService.checkAdminUser(token);
+    if (user == null) {
+      return JsonMessage.getFail(LOG_FAIL, "需要登录");
+    }
+    nau.setUser(user);
+    return null;
+  }
+
   @Around("controllerPointcut()")
   public Object token(ProceedingJoinPoint pjp) throws Throwable {
     TbToken token = processInputToken(pjp);
+    JsonMessage check = checkNeedUser(pjp, token);
+    // 如果有返回值，表示检测失败
+    if (check != null) {
+      return check;
+    }
     Object result = null;
     // 处理业务逻辑
     result = pjp.proceed();

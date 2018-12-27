@@ -3,25 +3,23 @@ package top.leseul.supermarketonline.aop;
 import top.leseul.supermarketonline.entity.TbAdminUser;
 
 /**
- * -需要登录的接口定义
+ * 需要登录的接口定义
  * 
- * @author LeSeul
+ * @author DarkKnight
  *
  */
 public interface NeedAdminUser {
-
   /**
-   * -设置登录用户信息
+   * 设置登录用户信息
    * 
-   * @param user
+   * @param user 登录用户信息
    */
-  public void setUSer(TbAdminUser user);
+  public void setUser(TbAdminUser user);
 
   /**
-   * -获取用户登录信息
+   * 获取登录用户信息
    * 
-   * @return
+   * @return 登录用户信息
    */
   public TbAdminUser getUser();
-
 }

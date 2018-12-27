@@ -20,7 +20,7 @@ import top.leseul.supermarketonline.utils.MyUtils;
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
-public class AdminUserServiceimpl implements AdminUserService {
+public class AdminUserServiceImpl implements AdminUserService {
 
   private static final String USER_ISENABLE = "y";
   @Autowired
