@@ -62,4 +62,13 @@ create table TbSubType
   lastupdate timestamp default now() comment '最后更新时间',
   constraint uniqueTbSubType unique(tid,subName)
 );
-s
+
+/*安全日志信息*/
+create table TbLogs
+(
+  lid int auto_increment primary key comment '主键',
+  operator varchar(50) comment '操作人员，可以为空',
+  log varchar(1000) not null comment '操作信息',
+  logtype varchar(50) not null comment '日志类型',
+  lastupdate timestamp default now() comment '最后更新时间'
+);

@@ -24,3 +24,7 @@ select tid,typeName,typeInfo,isEnable,lastupdate from  TbType;
 select stid,tid,subName,subInfo,isEnable,lastupdate from  TbSubType;
 select auid,username,password,nickname, isEnable,lastupdate from TbAdminUser;
 
+select i. *, u.username,u.nickname
+from tblogs i
+inner join tbadminuser u on i.operator=u.auid;
+

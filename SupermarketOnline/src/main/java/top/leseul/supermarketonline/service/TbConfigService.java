@@ -34,4 +34,12 @@ public interface TbConfigService {
    */
   JsonMessage updateTitle(TbConfigModel model) throws Exception;
 
+  /**
+   * 
+   * @param model
+   * @return
+   * @throws Exception
+   */
+  JsonMessage queryWebConfig(TbConfigModel model) throws Exception;
+
 }

@@ -1,5 +1,6 @@
 package top.leseul.supermarketonline.base;
 
+import top.leseul.supermarketonline.entity.TbAdminUser;
 import top.leseul.supermarketonline.entity.TbToken;
 import top.leseul.supermarketonline.entity.TbTokenInfo;
 
@@ -50,5 +51,17 @@ public abstract class BaseModel extends BaseEntity {
     info.setToken(token);
     return info;
   }
+  
+  private TbAdminUser tbAdminUser;
+
+  public TbAdminUser getTbAdminUser() {
+    return tbAdminUser;
+  }
+
+  public void setTbAdminUser(TbAdminUser tbAdminUser) {
+    this.tbAdminUser = tbAdminUser;
+  }
+  
+  
 
 }
