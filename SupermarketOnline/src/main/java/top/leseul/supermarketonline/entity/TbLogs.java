@@ -12,6 +12,35 @@ import top.leseul.supermarketonline.base.BaseEntity;
  */
 public class TbLogs extends BaseEntity {
 
+  private static final long serialVersionUID = 1931124062865537114L;
+  
+  private Integer lid;
+  private String operator;
+  private String log;
+  private String logtype;
+  private Date lastupdate;
+  private TbAdminUser adminUser;
+  
+  public TbLogs() {
+  }
+  
+  
+  
+
+  public TbAdminUser getAdminUser() {
+    return adminUser;
+  }
+
+
+
+
+  public void setAdminUser(TbAdminUser adminUser) {
+    this.adminUser = adminUser;
+  }
+
+
+
+
   public Integer getLid() {
     return lid;
   }
@@ -51,18 +80,5 @@ public class TbLogs extends BaseEntity {
   public void setLastupdate(Date lastupdate) {
     this.lastupdate = lastupdate;
   }
-
-  private static final long serialVersionUID = -6731432146091429438L;
-  
-  private Integer lid;
-  private String operator;
-  private String log;
-  private String logtype;
-  private Date lastupdate;
-
-  public TbLogs() {
-  }
-
- 
 
 }
